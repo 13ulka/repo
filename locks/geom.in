@@ -1,0 +1,5 @@
+torch
+torchvision
+mapanything @ git+https://github.com/facebookresearch/map-anything.git@3d10cf7a3016fc0f9bb13a071ee66c47b10be0d9
+numpy
+pillow

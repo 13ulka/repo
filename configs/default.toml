@@ -1,0 +1,81 @@
+# SceneForge default configuration.
+# Override with `--config my.toml` (deep-merged). A resolved snapshot is saved to work/<scene>/config.resolved.json.
+
+# "noncommercial" (default) or "commercial". Controls which model weights are used.
+# See docs/research/README.md for the full component swap table.
+license_profile = "noncommercial"
+
+# "auto" picks mps when available, else cpu. Stages that are very slow on CPU ask for confirmation.
+device = "auto"
+
+[envs]
+# Python interpreters of the isolated tool environments (created by scripts/setup_mac.sh).
+geom = "envs/geom/bin/python"
+mlx = "envs/mlx/bin/python"
+blender = "/Applications/Blender.app/Contents/MacOS/Blender"
+
+[ingest]
+detector = "adaptive"          # PySceneDetect detector: "adaptive" or "content"
+adaptive_threshold = 3.0
+content_threshold = 27.0
+min_shot_seconds = 0.5         # shorter shots are dropped (flashes, transitions)
+analysis_width = 480           # frame width used for motion/sharpness analysis
+min_fps = 2.0                  # adaptive keyframe rate bounds inside a shot
+max_fps = 10.0
+motion_step = 0.03             # accumulated median flow (fraction of width) that triggers a keyframe
+min_frames_per_shot = 3
+edge_skip_frames = 2           # frames skipped at each side of a cut (transition blur)
+sharpness_rel_min = 0.5        # drop frames with sharpness < this * shot median
+dark_luma_max = 12.0           # drop near-black frames (fades)
+max_keyframes = 260            # global cap; excess is thinned uniformly per shot
+image_format = "png"
+
+[masks]
+model = "mlx-community/sam3.1-bf16"
+prompts = ["person", "cartoon character", "human face", "hair", "animal", "creature"]
+score_threshold = 0.35
+dilate_px = 12
+max_masked_fraction = 0.6      # frames masked more than this are excluded from geometry
+
+[geometry]
+model = "mapanything"
+# weights per license profile
+weights_noncommercial = "facebook/map-anything"
+weights_commercial = "facebook/map-anything-apache"
+resolution_long_side = 518     # multiple of 14; model native resolution
+precision = "auto"             # auto: fp16 autocast on mps (bf16 unsupported), retry in fp32 on NaN
+memory_efficient = true
+minibatch_size = 0             # 0 = library default
+confidence_percentile = 10
+max_frames = 220               # frames beyond this are thinned per shot before inference
+exclude_shots = []             # shots to leave out (e.g. flagged low_overlap after inspection)
+points_per_frame = 40000       # subsample for the exported cloud
+# Shot registration check
+voxel_size_rel = 0.01          # voxel size as a fraction of the scene extent
+min_shot_overlap = 0.15        # fraction of a shot's voxels shared with other shots
+
+[segment]
+use_vlm = true
+vlm_url = "http://127.0.0.1:1234/v1"
+vlm_model = "qwen/qwen3-vl-8b"
+vlm_timeout_s = 600
+inventory_frames = 8
+# Used when the VLM is disabled/unavailable, and always merged with VLM output.
+structure_classes = ["floor", "wall", "ceiling", "window", "door"]
+default_prop_classes = ["bed", "desk", "chair", "shelf", "cabinet", "lamp", "rug", "curtain", "picture frame", "plant", "sofa", "table", "wardrobe", "mirror", "pillow"]
+score_threshold = 0.4
+max_classes = 28
+min_views = 2                  # detections seen in fewer keyframes are discarded
+association_voxel_rel = 0.02   # voxel size (fraction of scene extent) for 3D mask association
+association_iou = 0.15
+good_coverage_views = 3
+good_coverage_angle_deg = 30
+# Metric scale anchors: class -> [measured quantity, typical meters, tolerance]
+scale = "auto"                 # "auto" or a float (meters per model unit)
+max_anchor_spread = 0.2
+
+[segment.anchors]
+door = ["height", 2.03, 0.07]
+desk = ["top_height", 0.75, 0.05]
+table = ["top_height", 0.74, 0.06]
+bed = ["top_height", 0.55, 0.12]

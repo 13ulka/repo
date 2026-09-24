@@ -1,0 +1,190 @@
+annotated-doc==0.0.5
+    # via typer
+annotated-types==0.8.0
+    # via pydantic
+asttokens==3.0.2
+    # via stack-data
+attrs==26.1.0
+    # via
+    #   jsonschema
+    #   referencing
+blinker==1.9.0
+    # via flask
+certifi==2026.7.22
+    # via requests
+charset-normalizer==3.5.1
+    # via requests
+click==8.5.0
+    # via
+    #   flask
+    #   scenedetect
+comm==0.2.3
+    # via
+    #   dash
+    #   ipywidgets
+configargparse==1.7.7
+    # via open3d
+dash==4.4.1
+    # via open3d
+executing==2.2.1
+    # via stack-data
+fastjsonschema==2.22.2
+    # via nbformat
+flask==3.1.3
+    # via
+    #   dash
+    #   open3d
+idna==3.20
+    # via requests
+importlib-metadata==9.0.1
+    # via dash
+iniconfig==2.3.0
+    # via pytest
+ipython==9.17.1
+    # via ipywidgets
+ipython-pygments-lexers==1.1.1
+    # via ipython
+ipywidgets==8.1.9
+    # via open3d
+itsdangerous==2.2.0
+    # via flask
+janus==2.0.0
+    # via dash
+jedi==0.20.0
+    # via ipython
+jinja2==3.1.6
+    # via flask
+jsonschema==4.26.0
+    # via nbformat
+jsonschema-specifications==2025.9.1
+    # via jsonschema
+jupyter-core==5.9.1
+    # via nbformat
+jupyterlab-widgets==3.0.17
+    # via ipywidgets
+markdown-it-py==4.2.0
+    # via rich
+markupsafe==3.0.3
+    # via
+    #   flask
+    #   jinja2
+    #   werkzeug
+matplotlib-inline==0.2.2
+    # via ipython
+mdurl==0.1.2
+    # via markdown-it-py
+narwhals==2.26.0
+    # via plotly
+nbformat==5.11.1
+    # via open3d
+nest-asyncio==1.6.0
+    # via dash
+numpy==2.5.3
+    # via
+    #   -r main.in
+    #   open3d
+    #   opencv-python
+    #   scenedetect
+open3d==0.20.0
+    # via -r main.in
+opencv-python==5.0.0.93
+    # via
+    #   -r main.in
+    #   scenedetect
+packaging==26.3
+    # via
+    #   plotly
+    #   pytest
+parso==0.8.7
+    # via jedi
+pexpect==4.9.0
+    # via ipython
+pillow==12.3.0
+    # via -r main.in
+platformdirs==4.11.12
+    # via
+    #   jupyter-core
+    #   scenedetect
+plotly==7.1.0
+    # via dash
+pluggy==1.6.0
+    # via pytest
+prompt-toolkit==3.0.53
+    # via ipython
+psutil==7.2.2
+    # via
+    #   -r main.in
+    #   ipython
+ptyprocess==0.7.0
+    # via pexpect
+pure-eval==0.2.4
+    # via stack-data
+pydantic==2.13.5
+    # via dash
+pydantic-core==2.46.5
+    # via pydantic
+pygments==2.21.0
+    # via
+    #   ipython
+    #   ipython-pygments-lexers
+    #   pytest
+    #   rich
+pytest==9.1.1
+    # via -r main.in
+referencing==0.37.0
+    # via
+    #   jsonschema
+    #   jsonschema-specifications
+requests==2.34.2
+    # via
+    #   -r main.in
+    #   dash
+retrying==1.4.2
+    # via dash
+rich==15.0.0
+    # via typer
+rpds-py==2026.6.3
+    # via
+    #   jsonschema
+    #   referencing
+scenedetect==0.7.1
+    # via -r main.in
+setuptools==84.0.0
+    # via dash
+shellingham==1.5.4
+    # via typer
+stack-data==0.6.3
+    # via ipython
+tqdm==4.70.1
+    # via scenedetect
+traitlets==5.16.1
+    # via
+    #   ipython
+    #   ipywidgets
+    #   jupyter-core
+    #   matplotlib-inline
+    #   nbformat
+typer==0.27.2
+    # via -r main.in
+typing-extensions==4.16.0
+    # via
+    #   dash
+    #   pydantic
+    #   pydantic-core
+    #   referencing
+    #   typing-inspection
+typing-inspection==0.4.4
+    # via pydantic
+urllib3==2.8.0
+    # via requests
+wcwidth==0.9.1
+    # via prompt-toolkit
+werkzeug==3.1.8
+    # via
+    #   dash
+    #   flask
+    #   open3d
+widgetsnbextension==4.0.16
+    # via ipywidgets
+zipp==4.1.0
+    # via importlib-metadata
